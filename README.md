@@ -75,7 +75,9 @@ This solution assumes you have the following are installed andset up in your dep
 ### Deployment
 
 Go to the root directory of the project (where the package.jsonfile is). Run below command to install all dependencies.
-    npm install    
+
+        npm install    
+
 #### Windows
 If you're on Windows, you'll need to perform the below additional steps to set up kafka-streams package.
 
@@ -91,7 +93,7 @@ What worked for me on Windows is setting up correct path variables:
         npm config get msvs_version 
         npm config set msvs_version 2013 -g
 
-Ensure that you set these in env variables (set to appropriateversion and path applicable to your version of build tool)
+Ensure that you set these in env variables (set to appropriate version and path applicable to your version of build tool)
     
         MSBUILD_PATH=C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin
 
