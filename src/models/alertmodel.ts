@@ -35,8 +35,10 @@ export class AlertInputModel{
     public severity: string = strEmpty;
     
     @IsNotEmpty()
+    @IsString()
     public value: string = strEmpty;   
 
+    @IsString()
     public name: string = strEmpty;
 }
 

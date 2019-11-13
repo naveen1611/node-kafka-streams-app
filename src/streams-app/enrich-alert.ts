@@ -24,7 +24,7 @@ export class EnrichAlert {
             alertEntity.name = alertJsonObj.name;
         }
         log.loginfo("Started processing new event.." + alertMessage, "eventFieldMapperEtl", EnSeverity.medium);
-        return;
+        return alertEntity;
     };
 
     processAlert(alertEntity: AlertModel) {
