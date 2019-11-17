@@ -63,3 +63,18 @@ export class AlertResponseModel {
     data: any = null;
 }
 
+export class User {
+    userId: string = strEmpty;
+    phone: string = strEmpty;
+    email: string = strEmpty;
+}
+
+export class DeviceUser {
+    userId: string = strEmpty;
+    deviceId: string = strEmpty;
+}
+
+export class EnrichedAlertModel {
+    alert: AlertModel = new AlertModel();
+    users: User[] = [];
+}

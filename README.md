@@ -14,10 +14,10 @@ Apache Kafka is a community distributed event streaming platform capable of hand
 
 Pushblish + Subscribe, Store and Streams are the key features that Kafka provides. We publish alerts/events onto Kafka topics via Producer and process them using Streams (Consumer). Processing involves operations like picking relevant data, enriching data via lookups and storing enriched data back in kafka topics or calling other APIs that do further processing or store in a DB or trigger notifications based on some logic.
 
-### Redis (To be added)
+### Redis
 Redis is an in-memory data structure project implementing a distributed, in-memory key-value database with optional durability. 
 
-We use Redis in this solution to store and retrieve master data, that will be used to enrich our alert stream.  A WIP node service that pulls data from an SQL store and pushes onto Redis datastore. But this solution inserts sample data into Redis datastore.
+We use Redis in this solution to store and retrieve master data, that will be used to enrich our alert stream.  A WIP node service that pulls data from an SQL store and pushes onto Redis datastore. But this solution inserts sample lookup data into Redis datastore; finds users to be notified for each alert and enriches the alert with this lookup user data that can later be used by push notification services.
 
 ### Apache Cassandra (To be added)
 Apache Cassandra is a free and open-source, distributed, wide column store, NoSQL database management system designed to handle large amounts of data across many commodity servers, providing high availability with no single point of failure.
@@ -68,7 +68,19 @@ This solution assumes you have the following are installed andset up in your dep
 
 6. ### Redis
     https://redis.io/download </br> 
-    (OR) Follow this blogpost for setting up a dockerised version </br> https://markheath.net/post/exploring-redis-with-docker        
+    (OR) Follow this blogpost for setting up a dockerised version </br> https://markheath.net/post/exploring-redis-with-docker  
+
+    Dump sample master data on to Redis cache:
+
+    Go to the resources dir and give the following command.
+     
+        cat userdata.txt | redis-cli --pipe
+    
+    If your Redis instance runs on Docker, copy userdata.txt to the /data dir before running the --pipe command on the /data dir.
+    
+        docker cp <PATH TO RESOURCES>\userdata.txt <CONTAINER>:/data/
+    
+
 7. ### Apache Cassandra
     http://cassandra.apache.org/download/
     

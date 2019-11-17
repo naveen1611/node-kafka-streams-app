@@ -59,6 +59,11 @@ export interface IConfiguration {  // FE
             partitionerType: number
         }
     };
+    redisclient: {
+        port: number,
+        host: string,
+        auth_pass: string      
+    };
     applicationname:string;
     log: {
         path: string;

@@ -54,6 +54,11 @@
             "partitionerType": 3
         }
     },
+    "redisclient": {
+        "port": 6380,
+        "host": "gads-qa.redis.cache.windows.net",
+        "auth_pass": "8AC3ueqxKg5nShViOrbsqrRa5rtT54qQsV5S5EIv3BI="      
+    },
     "applicationname": "NODE-KAFKA-DEMO",
     "log":{ 
         "path":"../../logs", 
