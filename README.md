@@ -1,6 +1,9 @@
 # Introduction 
 Node js and Typescript based real time Alert delivery system, built on Kafka, Kafka-Streams, Redis and Cassandra. 
 
+## Version
+1.0.0
+
 ## Key Components
 
 ### Node js Express
@@ -152,30 +155,43 @@ REST API to send alerts. It produces the alerts to the kafka topics. One or more
 #### Sample payload
     [
         {
-            "builderId": "0759BEC7-BE74-4CF7-868C-B8391198E1E1",
+            "builderId": "50000001-6056-4A71-9428-005C98FDBF3B",
             "path": 
                 { 
-                    "buildingId": "0759BEC7-9cbf-4a36-819f-c306e7ee3700", 
-                    "deviceId": "E445ED0F-94CE-4279-8103-77B1E2C65034"
+                    "buildingId": "60000001-6056-4A71-9428-005C98FDBF3B", 
+                    "deviceId": "10010000-6056-4A71-9428-005C98FDBF3B"
                 },
-            "eventTimestamp": "2019-11-12T15:00:00+05:30",
+            "eventTimestamp": "2019-11-15T15:00:00+05:30",
             "severity": "High",
             "value": "165",
             "name": "High pressure"
         },
         {
-            "builderId": "0759BEC7-BE74-4CF7-868C-B8391198E1E1",
+            "builderId": "90000001-6056-4A71-9428-005C98FDBF3B",
             "path": 
                 { 
-                    "buildingId": "0759BEC7-9cbf-4a36-819f-c306e7ee3700", 
-                    "deviceId": "E445ED0F-94CE-4279-8103-77B1E2C65030"
+                    "buildingId": "60000002-6056-4A71-9428-005C98FDBF3B", 
+                    "deviceId": "20010000-6056-4A71-9428-005C98FDBF3B"
                 },
-            "eventTimestamp": "2019-11-12T15:00:00+05:30",
+            "eventTimestamp": "2019-11-15T15:00:00+05:30",
+            "severity": "High",
+            "value": "175",
+            "name": "High pressure"
+        },
+        {
+            "builderId": "50000001-6056-4A71-9428-005C98FDBF3B",
+            "path": 
+                { 
+                    "buildingId": "60000001-6056-4A71-9428-005C98FDBF3B", 
+                    "deviceId": "10010000-6056-4A71-9428-005C98FDBF3B"
+                },
+            "eventTimestamp": "2019-11-15T15:00:00+05:30",
             "severity": "Low",
             "value": "130",
             "name": "High pressure"
         }
     ]
+	
 	
 ### Sample Response
     {
@@ -184,13 +200,19 @@ REST API to send alerts. It produces the alerts to the kafka topics. One or more
             "error": null,
             "name": null,
             "data": {
-                "Total Alert Count": 2,
-                "Valid Alert Count": 2,
+                "Total Alert Count": 3,
+                "Valid Alert Count": 3,
                 "Bad Alert Count": 0,
                 "Bad Alerts": []
             }
         }
     }
+
+#### Kafka/Streams process
+Alert-1 gets enriched. </br>
+Alert-2 gets processed, but goes to bad-alert topic as there no users mapped for the given building/device.</br>
+Alert-3 gets processed, but is filtered (severity = low is filtered).</br>
+Alerts that fail entity validation go to the bad-alert topic.</br>
 
 # Contribute
 Peers are welcome! Drop me a message if you are interested in contributing. I am in the process of expanding this solution and am aiming at making it generic.
