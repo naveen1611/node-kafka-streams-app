@@ -87,7 +87,16 @@ This solution assumes you have the following are installed andset up in your dep
 7. ### Apache Cassandra
     http://cassandra.apache.org/download/
     
-### Deployment
+## Deployment
+
+### Docker
+Go to the root directory of the project (where the package.json and Dockerfile are). Run below command to install all dependencies.
+
+	docker build --tag alarmdeliverysystem:1.0 .
+	docker run --publish 8080:5000 --name ads alarmdeliverysystem:1.0
+
+
+### Non Docker
 
 Go to the root directory of the project (where the package.jsonfile is). Run below command to install all dependencies.
 
